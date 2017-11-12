@@ -37,6 +37,7 @@ public class ControllerPrincipal {
     viewp.jmi_cliente.addActionListener(e -> jmi_clienteActionPerformed());
     viewp.jmi_pelicula.addActionListener(e -> jmi_peliculaActionPerformed());
     viewp.jmi_renta.addActionListener(e -> jmi_rentaActionPerformed());
+    viewp.salir.addActionListener(e -> salir_click());
     
   initView();
 
@@ -75,5 +76,8 @@ public class ControllerPrincipal {
        this.viewp.setVisible(true);
     }
      
+    private void salir_click(){
+        System.exit(0);
+    }
     
 }//fin de la clase principal 

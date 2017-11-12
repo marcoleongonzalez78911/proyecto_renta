@@ -28,7 +28,8 @@ public class ModelPeliculas {
     private String formato;
     private String duracion;
     private String descripcion;
-    
+
+
     public void setId_pelicula(int id_pelicula){
         this.id_pelicula = id_pelicula;
     }
@@ -69,7 +70,7 @@ public class ModelPeliculas {
         st = conexion.createStatement();
         SelecccionarTodo();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 101");
+        JOptionPane.showMessageDialog(null,"Error 111");
     }
     }//conectar
      
@@ -81,7 +82,7 @@ public class ModelPeliculas {
         setDuracion(rs.getString("Duracion"));
         setDescripcion(rs.getString("Descripcion"));
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 102");
+        JOptionPane.showMessageDialog(null,"Error 112");
     }
     }//fin del llenarvalores
     
@@ -90,7 +91,7 @@ public class ModelPeliculas {
        rs.first();
        llenarValores();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 103");
+        JOptionPane.showMessageDialog(null,"Error 113");
     }
    
     }//fin de mover primero
@@ -100,7 +101,7 @@ public class ModelPeliculas {
        rs.last();  
        llenarValores();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 104");
+        JOptionPane.showMessageDialog(null,"Error 114");
     }
    
     }//fin de mover ultimo
@@ -112,7 +113,7 @@ public class ModelPeliculas {
              llenarValores();
          } 
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 105");
+        JOptionPane.showMessageDialog(null,"Error 115");
     }
    
     }//fin de mover siguiente
@@ -124,7 +125,7 @@ public class ModelPeliculas {
              llenarValores();
          } 
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 106");
+        JOptionPane.showMessageDialog(null,"Error 116");
     }
    
     }//fin de mover anterior
@@ -136,61 +137,63 @@ public class ModelPeliculas {
          rs = ps.executeQuery();
          moverPrimero();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 107");
+        JOptionPane.showMessageDialog(null,"Error 117");
     }
    
     }//fin de mover siguiente
       
     public void Insertar(){
      try{
-        sql = "insert into peliculas(id_peliculas, nombre, formato,Duracion,Descripcion)values(?,?,?,?,?);";
+        sql = "INSERT INTO peliculas(id_peliculas, nombre, formato,Duracion,Descripcion)values(?,?,?,?,?);";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(5,getId_pelicula());
-        ps.setString(1,getNombre());
-        ps.setString(2,getFormato());
-        ps.setString(3,getDuracion());
-         ps.setString(4,getDescripcion());
+        ps.setInt(1,getId_pelicula());
+        ps.setString(2,getNombre());
+        ps.setString(3,getFormato());
+        ps.setString(4,getDuracion());
+         ps.setString(5,getDescripcion());
         ps.executeUpdate();
          Conectar();
          moverPrimero();
          
           
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 108" + ex.getMessage());
+        JOptionPane.showMessageDialog(null,"Error 118" + ex.getMessage());
     }
     }//fin de insertar 
    
      public void borrar(){
      try{
-        sql = "Delete from peliculas where id_peliculas = ?;";
+        sql = "DELETE FROM peliculas WHERE id_peliculas = ?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(0,getId_pelicula());
+        ps.setInt(1,getId_pelicula());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
          } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 109");
+        JOptionPane.showMessageDialog(null,"Error 119");
     }
     }//fin de borrar 
      
      public void actualizar(){
      try{
-        sql = "UPDATE peliculas SET nombre = ?, formato = ?, duracion = ?, descripcion = ?;";
+        sql = "UPDATE peliculas SET  id_peliculas = ?, nombre = ?, formato = ?, duracion = ?, descripcion = ?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(4, getId_pelicula());
-        ps.setString(0,getNombre());
-        ps.setString(1,getFormato());
-        ps.setString(2,getDuracion());
-        ps.setString(3,getDescripcion());
+        ps.setInt(1, getId_pelicula());
+        ps.setString(2,getNombre());
+        ps.setString(3,getFormato());
+        ps.setString(4,getDuracion());
+        ps.setString(5,getDescripcion());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
          
           
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 110");
+     
+        JOptionPane.showMessageDialog(null,"Error 120");
     }
     }//fin de actualizar
+   
      
     
     

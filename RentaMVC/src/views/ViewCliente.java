@@ -46,6 +46,10 @@ public class ViewCliente extends javax.swing.JPanel {
         jbtn_ultimo = new javax.swing.JButton();
         jbtn_agregar = new javax.swing.JButton();
         jbtn_nuevo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_clientes = new javax.swing.JTable();
+        jl_buscar = new javax.swing.JLabel();
+        jtf_buscar = new javax.swing.JTextField();
 
         jl_titulo.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jl_titulo.setText("     Clientes");
@@ -76,6 +80,21 @@ public class ViewCliente extends javax.swing.JPanel {
 
         jbtn_nuevo.setText("Nuevo");
 
+        jt_clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Clave", "Nombre", "Telefono", "Email", "Direccion"
+            }
+        ));
+        jScrollPane1.setViewportView(jt_clientes);
+
+        jl_buscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,9 +109,6 @@ public class ViewCliente extends javax.swing.JPanel {
                     .addComponent(jl_direccion, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jtf_id_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jtf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,10 +128,24 @@ public class ViewCliente extends javax.swing.JPanel {
                                 .addComponent(jbtn_siguiente))
                             .addComponent(jbtn_actualizar)
                             .addComponent(jbtn_agregar))
-                        .addContainerGap(44, Short.MAX_VALUE))))
+                        .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtf_id_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jl_buscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,12 +181,19 @@ public class ViewCliente extends javax.swing.JPanel {
                     .addComponent(jtf_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn_eliminar)
                     .addComponent(jbtn_actualizar))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_buscar)
+                    .addComponent(jtf_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton jbtn_actualizar;
     public javax.swing.JButton jbtn_agregar;
     public javax.swing.JButton jbtn_anterior;
@@ -165,12 +202,15 @@ public class ViewCliente extends javax.swing.JPanel {
     public javax.swing.JButton jbtn_primero;
     public javax.swing.JButton jbtn_siguiente;
     public javax.swing.JButton jbtn_ultimo;
+    public javax.swing.JLabel jl_buscar;
     public javax.swing.JLabel jl_direccion;
     public javax.swing.JLabel jl_email;
     public javax.swing.JLabel jl_id_cliente;
     public javax.swing.JLabel jl_nombre;
     public javax.swing.JLabel jl_telefono;
     public javax.swing.JLabel jl_titulo;
+    public javax.swing.JTable jt_clientes;
+    public javax.swing.JTextField jtf_buscar;
     public javax.swing.JTextField jtf_direccion;
     public javax.swing.JTextField jtf_email;
     public javax.swing.JTextField jtf_id_cliente;

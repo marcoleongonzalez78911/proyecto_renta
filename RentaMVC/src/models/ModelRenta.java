@@ -69,13 +69,17 @@ public class ModelRenta {
         return costo_renta;
     }
     
+   /* public void multi(){
+        costo_renta = costo * no_dias;
+    }*/
+    
      public void Conectar(){
     try{
         conexion = DriverManager.getConnection("jdbc:mysql://localhost/proyecto","root","marko");
         st = conexion.createStatement();
         SelecccionarTodo();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 101");
+        JOptionPane.showMessageDialog(null,"Error 121");
     }
     }//conectar
      
@@ -88,7 +92,7 @@ public class ModelRenta {
         setNo_dias(rs.getInt("no_dias"));
         setCosto_renta(rs.getString("Costo_renta"));
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 102");
+        JOptionPane.showMessageDialog(null,"Error 122");
     }
     }//fin del llenarvalores
     
@@ -97,7 +101,7 @@ public class ModelRenta {
        rs.first();
        llenarValores();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 103");
+        JOptionPane.showMessageDialog(null,"Error 123");
     }
    
     }//fin de mover primero
@@ -107,7 +111,7 @@ public class ModelRenta {
        rs.last();  
        llenarValores();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 104");
+        JOptionPane.showMessageDialog(null,"Error 124");
     }
    
     }//fin de mover ultimo
@@ -119,7 +123,7 @@ public class ModelRenta {
              llenarValores();
          } 
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 105");
+        JOptionPane.showMessageDialog(null,"Error 125");
     }
    
     }//fin de mover siguiente
@@ -131,7 +135,7 @@ public class ModelRenta {
              llenarValores();
          } 
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 106");
+        JOptionPane.showMessageDialog(null,"Error 126");
     }
    
     }//fin de mover anterior
@@ -143,7 +147,7 @@ public class ModelRenta {
          rs = ps.executeQuery();
          moverPrimero();
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 107");
+        JOptionPane.showMessageDialog(null,"Error 127");
     }
    
     }//fin de mover siguiente
@@ -152,19 +156,19 @@ public class ModelRenta {
      try{
         sql = "insert into renta(id_renta, id_cliente, id_pelicula, costo,no_dias,costo_renta)values(?,?,?,?,?,?);";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(6,getId_renta());
-        ps.setInt(1,getId_cliente());
-        ps.setInt(2,getId_pelicula());
-        ps.setString(3,getCosto());
-        ps.setInt(4,getNo_dias());
-        ps.setString(5,getCosto_renta());
+        ps.setInt(1,getId_renta());
+        ps.setInt(2,getId_cliente());
+        ps.setInt(3,getId_pelicula());
+        ps.setString(4,getCosto());
+        ps.setInt(5,getNo_dias());
+        ps.setString(6,getCosto_renta());
         ps.executeUpdate();
          Conectar();
          moverPrimero();
          
           
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 108" + ex.getMessage());
+        JOptionPane.showMessageDialog(null,"Error 128" + ex.getMessage());
     }
     }//fin de insertar 
    
@@ -172,32 +176,32 @@ public class ModelRenta {
      try{
         sql = "Delete from renta where id_renta = ?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(0,getId_renta());
+        ps.setInt(1,getId_renta());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
          } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 109");
+        JOptionPane.showMessageDialog(null,"Error 129");
     }
     }//fin de borrar 
      
      public void actualizar(){
      try{
-        sql = "UPDATE renta SET id_cliente = ?, id_pelicula = ?, costo = ?, no_dias = ?, costo_renta?;";
+        sql = "UPDATE renta SET id_renta = ?, id_cliente = ?, id_pelicula = ?, costo = ?, no_dias = ?, costo_renta?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(5, getId_renta());
-        ps.setInt(0,getId_cliente());
-        ps.setInt(1,getId_pelicula());
-        ps.setString(2,getCosto());
-        ps.setInt(3,getNo_dias());
-        ps.setString(4,getCosto_renta());
+        ps.setInt(1, getId_renta());
+        ps.setInt(2,getId_cliente());
+        ps.setInt(3,getId_pelicula());
+        ps.setString(4,getCosto());
+        ps.setInt(5,getNo_dias());
+        ps.setString(6,getCosto_renta());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
          
           
     } catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error 110");
+        JOptionPane.showMessageDialog(null,"Error 130");
     }
     }//fin de actualizar
      

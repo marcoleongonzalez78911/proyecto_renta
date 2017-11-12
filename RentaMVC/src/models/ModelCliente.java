@@ -66,7 +66,8 @@ public class ModelCliente {
     try{
         conexion = DriverManager.getConnection("jdbc:mysql://localhost/proyecto","root","marko");
         st = conexion.createStatement();
-        SelecccionarTodo();
+        SeleccionarTodo();
+        
     } catch(SQLException ex){
         JOptionPane.showMessageDialog(null,"Error 101");
     }
@@ -128,7 +129,7 @@ public class ModelCliente {
    
     }//fin de mover anterior
      
-      public void SelecccionarTodo(){
+      public void SeleccionarTodo(){
      try{
          sql = "select * from clientes;";
          ps = conexion.prepareStatement(sql);
@@ -144,11 +145,11 @@ public class ModelCliente {
      try{
         sql = "insert into clientes(id_cliente, nombre, email,telefono,direccion)values(?,?,?,?,?);";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(5,getId_cliente());
-        ps.setString(1,getNombre());
-        ps.setString(2,getEmail());
-        ps.setString(3,getTelefono());
-         ps.setString(4,getDireccion());
+        ps.setInt(1,getId_cliente());
+        ps.setString(2,getNombre());
+        ps.setString(3,getEmail());
+        ps.setString(4,getTelefono());
+         ps.setString(5,getDireccion());
         ps.executeUpdate();
          Conectar();
          moverPrimero();
@@ -163,7 +164,7 @@ public class ModelCliente {
      try{
         sql = "Delete from clientes where id_cliente = ?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(0,getId_cliente());
+        ps.setInt(1,getId_cliente());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
@@ -176,11 +177,11 @@ public class ModelCliente {
      try{
         sql = "UPDATE clientes SET nombre = ?, email = ?, telefono = ?, direccion = ?;";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(4, getId_cliente());
-        ps.setString(0,getNombre());
-        ps.setString(1,getEmail());
-        ps.setString(2,getTelefono());
-        ps.setString(3,getDireccion());
+        ps.setInt(1, getId_cliente());
+        ps.setString(2,getNombre());
+        ps.setString(3,getEmail());
+        ps.setString(4,getTelefono());
+        ps.setString(5,getDireccion());
         ps.executeUpdate();
         Conectar();
         moverPrimero();
@@ -190,6 +191,5 @@ public class ModelCliente {
         JOptionPane.showMessageDialog(null,"Error 110");
     }
     }//fin de actualizar
-     
      
 }// fin de la Clase del ModelCliente
